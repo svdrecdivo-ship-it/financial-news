@@ -9,73 +9,101 @@
             --bg: #fdfcf0;
             --accent: #000;
             --card-bg: #ffffff;
-            --blue: #0d47a1;
-            --red: #b71c1c;
-            --green: #1b5e20;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             background-color: var(--bg);
-            margin: 0; padding: 20px;
+            margin: 0; padding: 0; /* Bỏ padding để tràn lề */
         }
 
         header {
             text-align: center;
-            padding: 25px;
+            padding: 30px;
             background: #fff;
-            border: 5px solid var(--accent);
-            box-shadow: 8px 8px 0 var(--accent);
+            border-bottom: 8px solid var(--accent);
             margin-bottom: 30px;
         }
 
-        h1 { margin: 0; font-size: 2.2em; text-transform: uppercase; }
+        h1 { margin: 0; font-size: 2.5em; text-transform: uppercase; letter-spacing: 2px; }
 
+        /* DÀN ĐỀU 3 CỘT TRÀN MÀN HÌNH */
         .container {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(3, 1fr); /* Chia đều 3 cột bằng nhau */
+            gap: 20px;
+            padding: 0 20px;
+            max-width: 100%; /* Cho phép tràn rộng tối đa */
         }
 
         .news-section {
             background: var(--card-bg);
-            border: 4px solid var(--accent);
-            border-radius: 12px;
+            border: 6px solid var(--accent);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
             height: 750px;
             display: flex;
             flex-direction: column;
+            transition: 0.3s;
         }
+
+        .news-section:hover { transform: translateY(-5px); }
 
         .section-title {
             color: #fff;
-            padding: 15px;
+            padding: 20px;
             font-weight: 900;
             text-transform: uppercase;
             text-align: center;
-            font-size: 1.2em;
+            font-size: 1.5em; /* Chữ tiêu đề to hơn nữa */
         }
 
-        .bg-blue { background: var(--blue); }
-        .bg-red { background: var(--red); }
-        .bg-green { background: var(--green); }
+        .bg-blue { background: #0d47a1; }
+        .bg-red { background: #b71c1c; }
+        .bg-green { background: #1b5e20; }
 
-        /* KHUNG HIỂN THỊ TIN TỨC */
+        /* KHUNG CHỨA TIN - DÙNG LINK TRỰC TIẾP ĐỂ KHÔNG BỊ LỖI CHỮ */
         .feed-frame {
             flex-grow: 1;
-            border: none;
-            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
+
+        .btn-news {
+            background: var(--accent);
+            color: #fff;
+            padding: 20px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3em;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-news:hover { background: #444; transform: scale(1.1); }
+
+        .desc { font-size: 1.1em; color: #555; margin-bottom: 20px; padding: 0 20px; }
 
         footer {
             text-align: center;
             margin-top: 40px;
-            padding: 20px;
-            border-top: 4px solid var(--accent);
+            padding: 25px;
+            border-top: 8px solid var(--accent);
+            background: #fff;
             font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 1000px) {
+            .container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -83,30 +111,42 @@
 
     <header>
         <h1>🏛️ TRUNG TÂM TIN TỨC CHIẾN LƯỢC</h1>
-        <p>Kinh tế - Địa chính trị - Tài chính (Cập nhật 2026)</p>
+        <p style="font-weight: bold;">Cổng thông tin Kinh tế - Địa chính trị sạch (Cập nhật 2026)</p>
     </header>
 
     <div class="container">
         
         <div class="news-section">
-            <div class="section-title bg-blue">📈 KINH TẾ QUỐC TẾ</div>
-            <iframe class="feed-frame" src="https://www.bing.com/news/search?q=kinh+tế+thế+giới&format=rss&setmkt=vi-vn" ></iframe>
+            <div class="section-title bg-blue">📈 KINH TẾ THẾ GIỚI</div>
+            <div class="feed-frame">
+                <p class="desc">Cập nhật chỉ số thị trường, GDP toàn cầu và các phân tích tài chính mới nhất từ VnExpress & CafeF.</p>
+                <a href="https://vnexpress.net/kinh-doanh/quoc-te" target="_blank" class="btn-news">XEM TIN KINH TẾ ↗</a>
+                <p style="margin-top:20px; font-size: 0.9em; color: #888;">(Bấm để mở trang tin sạch - Không quảng cáo nhiễu)</p>
+            </div>
         </div>
 
         <div class="news-section">
             <div class="section-title bg-red">🌍 ĐỊA CHÍNH TRỊ</div>
-            <iframe class="feed-frame" src="https://www.bing.com/news/search?q=địa+chính+trị+toàn+cầu&format=rss&setmkt=vi-vn" ></iframe>
+            <div class="feed-frame">
+                <p class="desc">Theo dõi biến động tình hình các khu vực, quan hệ ngoại giao và các sự kiện quốc tế trọng điểm.</p>
+                <a href="https://tuoitre.vn/the-gioi.htm" target="_blank" class="btn-news">XEM TIN THẾ GIỚI ↗</a>
+                <p style="margin-top:20px; font-size: 0.9em; color: #888;">(Nguồn báo Tuổi Trẻ - Tin tức xác thực)</p>
+            </div>
         </div>
 
         <div class="news-section">
-            <div class="section-title bg-green">⚖️ TÀI CHÍNH - THỊ TRƯỜNG</div>
-            <iframe class="feed-frame" src="https://www.bing.com/news/search?q=thị+trường+tài+chính&format=rss&setmkt=vi-vn" ></iframe>
+            <div class="section-title bg-green">⚖️ TÀI CHÍNH - ĐẦU TƯ</div>
+            <div class="feed-frame">
+                <p class="desc">Phân tích chuyên sâu về dòng vốn, thị trường tài chính và các chiến lược đầu tư năm 2026.</p>
+                <a href="https://vietnamnet.vn/kinh-doanh/tai-chinh" target="_blank" class="btn-blank btn-news">XEM TIN TÀI CHÍNH ↗</a>
+                <p style="margin-top:20px; font-size: 0.9em; color: #888;">(Cập nhật từ VietNamNet Tài Chính)</p>
+            </div>
         </div>
 
     </div>
 
     <footer>
-        DESIGNED BY NAM KO HỀ | CÔNG CỤ LỌC TIN 2026
+        HỆ THỐNG LỌC TIN CHIẾN LƯỢC | DESIGNED BY NAM KO HỀ | 2026
     </footer>
 
 </body>

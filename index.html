@@ -3,85 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thông tin cập nhật</title>
+  <title>Trung tâm chiến lược</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #eef2f5;
+      font-family: 'Inter', sans-serif;
+      background: #f1f3f6;
     }
 
     header {
-      background: #111;
-      color: white;
-      padding: 15px;
       text-align: center;
-      font-size: 26px;
-      font-weight: bold;
+      padding: 30px 20px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+      font-weight: 700;
+    }
+
+    header p {
+      margin-top: 10px;
+      color: #555;
+    }
+
+    /* ticker */
     .ticker {
-      background: #0a8f3d;
-      color: white;
+      background: #111;
+      color: #fff;
+      padding: 10px;
       overflow: hidden;
       white-space: nowrap;
-      padding: 10px 0;
     }
 
     .ticker span {
       display: inline-block;
       padding-left: 100%;
-      animation: ticker 20s linear infinite;
+      animation: scroll 20s linear infinite;
     }
 
-    @keyframes ticker {
+    @keyframes scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
-    .container {
+    /* grid */
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
       padding: 20px;
     }
 
-    .card {
+    .panel {
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
       background: white;
-      padding: 20px;
-      border-radius: 12px;
-      min-height: 450px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
-    .card h2 {
-      margin: 0 0 10px;
-    }
-
-    .stats {
-      font-size: 14px;
-      margin-bottom: 10px;
-      line-height: 1.6;
-    }
-
-    .news {
-      flex: 1;
-      font-size: 14px;
-      line-height: 1.6;
-      overflow-y: auto;
-    }
-
-    .btn {
-      margin-top: 10px;
-      padding: 8px 12px;
-      background: #007bff;
+    .panel-header {
+      padding: 14px 18px;
       color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      text-align: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .blue { background: #1f5fae; }
+    .red { background: #c51616; }
+    .green { background: #0c6b2f; }
+
+    .panel-body {
+      padding: 18px;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .value {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .green-text { color: #0c8f3a; }
+    .red-text { color: #c51616; }
+
+    .box {
+      background: #f7f9fb;
+      padding: 12px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     footer {
@@ -91,39 +113,61 @@
       color: white;
       margin-top: 20px;
     }
+
   </style>
 </head>
 <body>
 
 <header>
-  Thông tin cập nhật
+  <h1>🏛️ TRUNG TÂM CHIẾN LƯỢC BẢO NAM</h1>
+  <p>Hệ thống Terminal: Địa chính trị & Kinh tế Việt Nam</p>
 </header>
 
 <div class="ticker">
-  <span id="breaking-news">Đang tải tin nóng...</span>
+  <span id="ticker">Đang tải dữ liệu...</span>
 </div>
 
-<div class="container">
+<div class="grid">
 
-  <div class="card">
-    <h2>Tài chính</h2>
-    <div class="stats" id="finance-stats"></div>
-    <div class="news" id="finance"></div>
-    <a class="btn" href="https://vnexpress.net/kinh-doanh" target="_blank">VNExpress</a>
+  <!-- TÀI CHÍNH -->
+  <div class="panel">
+    <div class="panel-header blue">📊 CHỈ SỐ VĨ MÔ</div>
+    <div class="panel-body">
+      <div class="row">USD/VND <span class="value red-text" id="usd"></span></div>
+      <div class="row">DXY <span class="value" id="dxy"></span></div>
+
+      <div class="box">
+        <b>TÁC ĐỘNG:</b><br>
+        USD tăng → áp lực tỷ giá và lạm phát
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Kinh tế</h2>
-    <div class="stats" id="economy-stats"></div>
-    <div class="news" id="economy"></div>
-    <a class="btn" href="https://vnexpress.net/kinh-doanh" target="_blank">VNExpress</a>
+  <!-- ĐỊA CHÍNH TRỊ -->
+  <div class="panel">
+    <div class="panel-header red">🌍 ĐỊA CHÍNH TRỊ</div>
+    <div class="panel-body">
+      <div class="row">Dầu Brent <span class="value green-text" id="oil"></span></div>
+      <div class="row">Vàng <span class="value green-text" id="gold"></span></div>
+
+      <div class="box">
+        <b>RỦI RO:</b><br>
+        Căng thẳng toàn cầu → giá dầu & vàng tăng
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Địa chính trị</h2>
-    <div class="stats" id="geo-stats"></div>
-    <div class="news" id="geo"></div>
-    <a class="btn" href="https://vnexpress.net/the-gioi" target="_blank">VNExpress</a>
+  <!-- VIỆT NAM -->
+  <div class="panel">
+    <div class="panel-header green">⚖️ THỊ TRƯỜNG VIỆT NAM</div>
+    <div class="panel-body">
+      <div class="row">VNINDEX <span class="value green-text" id="vnindex"></span></div>
+
+      <div class="box">
+        <b>NGÀNH HƯỞNG LỢI:</b><br>
+        Dầu khí, xuất khẩu, logistics
+      </div>
+    </div>
   </div>
 
 </div>
@@ -133,71 +177,22 @@
 </footer>
 
 <script>
-  function random(min, max) {
+  function rand(min, max) {
     return (Math.random() * (max - min) + min).toFixed(2);
   }
 
-  function updateStats() {
-    document.getElementById("finance-stats").innerHTML = `
-      VNINDEX: ${random(1100, 1300)}<br>
-      USD/VND: ${random(24000, 26000)}<br>
-      Vàng: ${random(70, 85)} triệu/lượng
-    `;
+  function update() {
+    document.getElementById("usd").innerText = rand(24000, 26000);
+    document.getElementById("dxy").innerText = rand(100, 110);
+    document.getElementById("oil").innerText = "$" + rand(90, 110);
+    document.getElementById("gold").innerText = "$" + rand(2200, 2500);
+    document.getElementById("vnindex").innerText = rand(1200, 1300);
 
-    document.getElementById("economy-stats").innerHTML = `
-      GDP Growth: ${random(5, 8)} %<br>
-      Lạm phát: ${random(2, 5)} %<br>
-      Lãi suất: ${random(3, 7)} %
-    `;
-
-    document.getElementById("geo-stats").innerHTML = `
-      Dầu Brent: ${random(70, 100)} USD<br>
-      USD Index: ${random(95, 110)}<br>
-      Căng thẳng: Trung bình
-    `;
+    document.getElementById("ticker").innerText = "Breaking: Thị trường biến động mạnh | Dầu tăng | USD tăng | VNINDEX hồi phục";
   }
 
-  async function loadNews() {
-    try {
-      const res = await fetch("https://api.allorigins.win/raw?url=https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml");
-      const data = await res.text();
-
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(data, "text/xml");
-      const items = xml.querySelectorAll("item");
-
-      let financeHTML = "";
-      let economyHTML = "";
-      let geoHTML = "";
-      let tickerText = "";
-
-      items.forEach((item, index) => {
-        const title = item.querySelector("title").textContent;
-
-        if (index < 5) financeHTML += `<div>- ${title}</div>`;
-        else if (index < 10) economyHTML += `<div>- ${title}</div>`;
-        else if (index < 15) geoHTML += `<div>- ${title}</div>`;
-
-        if (index < 10) tickerText += title + " | ";
-      });
-
-      document.getElementById("finance").innerHTML = financeHTML;
-      document.getElementById("economy").innerHTML = economyHTML;
-      document.getElementById("geo").innerHTML = geoHTML;
-      document.getElementById("breaking-news").textContent = tickerText;
-
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  function refreshAll() {
-    updateStats();
-    loadNews();
-  }
-
-  refreshAll();
-  setInterval(refreshAll, 60000);
+  update();
+  setInterval(update, 5000);
 </script>
 
 </body>

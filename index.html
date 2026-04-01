@@ -1,125 +1,94 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TERMINAL BẢO NAM - BIG DATA 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&family=Roboto:wght@900&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #fff; color: #000; overflow-x: hidden; }
-        
-        header { text-align: center; padding: 30px; border-bottom: 10px solid #000; background: #fff; }
-        header h1 { font-size: 50px; margin: 0; text-transform: uppercase; font-weight: 900; letter-spacing: -2px; }
-
-        .main-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            width: 100%; min-height: 80vh;
-        }
-
-        .col { border-right: 5px solid #000; display: flex; flex-direction: column; }
-        .col:last-child { border-right: none; }
-
-        .label-header {
-            padding: 20px; color: #fff; text-align: center; font-size: 30px; font-weight: 900;
-            text-transform: uppercase; border-bottom: 5px solid #000;
-        }
-        .bg-blue { background: #003366; }
-        .bg-red { background: #990000; }
-        .bg-green { background: #004d00; }
-
-        .data-content { padding: 40px 20px; flex-grow: 1; text-align: center; }
-
-        /* PHÓNG ĐẠI CHỈ SỐ */
-        .label-sub { font-size: 24px; font-weight: bold; color: #666; text-transform: uppercase; display: block; }
-        
-        .huge-number { 
-            font-size: 120px; /* CHỮ SIÊU TO */
-            font-weight: 900; line-height: 1; margin: 20px 0;
-            font-family: 'Roboto Mono', monospace; letter-spacing: -5px;
-        }
-        .up { color: #00a000; }
-        .down { color: #d00000; }
-
-        /* BOX PHÂN TÍCH */
-        .analysis-card {
-            background: #f8f9fa; margin: 20px; padding: 30px;
-            border-radius: 15px; border: 4px solid #000; text-align: left;
-        }
-        .analysis-card h3 { font-size: 26px; margin-top: 0; text-transform: uppercase; border-bottom: 2px solid #000; padding-bottom: 10px; }
-        .analysis-card p { font-size: 22px; line-height: 1.4; font-weight: 500; }
-
-        .sector-tag {
-            display: block; background: #fff; padding: 15px; margin-bottom: 10px;
-            border-left: 10px solid #004d00; font-size: 21px; font-weight: bold; border-right: 1px solid #ddd; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd;
-        }
-
-        footer { text-align: center; padding: 25px; background: #000; color: #fff; font-size: 20px; font-weight: bold; }
-
-        @media (max-width: 1200px) { .main-grid { grid-template-columns: 1fr; } .huge-number { font-size: 80px; } }
-    </style>
+  <meta charset="UTF-8">
+  <title>Thông tin thời gian thực</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px;
+    }
+    .box {
+      background: #fff;
+      border: 1px solid #ccc;
+      width: 30%;
+      height: 300px; /* nhiều mảng trống để sau này thêm nội dung */
+      padding: 10px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .box h2 {
+      text-align: center;
+    }
+    .buttons {
+      text-align: center;
+      margin: 20px;
+    }
+    .buttons a {
+      margin: 0 10px;
+      padding: 10px 20px;
+      background: #0073e6;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .ticker {
+      background: #0073e6;
+      color: #fff;
+      padding: 10px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 15s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Thông tin thời gian thực</h1>
+  </header>
 
-<header>
-    <h1>🏛️ TRUNG TÂM CHIẾN LƯỢC BẢO NAM</h1>
-</header>
-
-<div class="main-grid">
-    <div class="col">
-        <div class="label-header bg-blue">📊 VĨ MÔ / TỶ GIÁ</div>
-        <div class="data-content">
-            <span class="label-sub">USD / VND</span>
-            <span class="huge-number down">26.335</span>
-            
-            <div class="analysis-card">
-                <h3>Logic Tài chính:</h3>
-                <p>Tỷ giá cao ➔ Hỗ trợ biên lợi nhuận nhóm Xuất khẩu. Dòng tiền FDI tiếp tục đổ vào KCN Việt Nam.</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="box">
+      <h2>Tài chính</h2>
+      <!-- Nội dung cập nhật thời gian thực sẽ được thêm bằng JS/API -->
     </div>
-
-    <div class="col">
-        <div class="label-header bg-red">🌍 ĐỊA CHÍNH TRỊ</div>
-        <div class="data-content">
-            <span class="label-sub">Dầu Brent ($/bbl)</span>
-            <span class="huge-number up">102.60</span>
-            
-            <div class="analysis-card">
-                <h3>Tác động:</h3>
-                <p>Xung đột leo thang ➔ Giá năng lượng duy trì vùng đỉnh ➔ Ngành Dầu khí hưởng lợi đột biến.</p>
-            </div>
-        </div>
+    <div class="box">
+      <h2>Kinh tế</h2>
+      <!-- Nội dung cập nhật thời gian thực -->
     </div>
-
-    <div class="col">
-        <div class="label-header bg-green">⚖️ THỊ TRƯỜNG VIỆT NAM</div>
-        <div class="data-content">
-            <span class="label-sub">VN-INDEX</span>
-            <span class="huge-number up" id="vni-number">1.725,50</span>
-            
-            <div class="analysis-card">
-                <h3>Ngành hưởng lợi Real-time:</h3>
-                <div class="sector-tag">🚀 DẦU KHÍ (PVS, PVD, GAS)</div>
-                <div class="sector-tag">🛳️ LOGISTICS & CẢNG BIỂN</div>
-                <div class="sector-tag">🐟 XUẤT KHẨU THỦY SẢN</div>
-            </div>
-        </div>
+    <div class="box">
+      <h2>Địa chính trị</h2>
+      <!-- Nội dung cập nhật thời gian thực -->
     </div>
-</div>
+  </div>
 
-<script>
-    // Hàm cập nhật chỉ số VN-Index thời gian thực
-    function updateVNI() {
-        let base = 1725.50; // Con số mới nhất bạn yêu cầu
-        let drift = (Math.random() * 0.8) - 0.4;
-        let final = (base + drift).toFixed(2);
-        document.getElementById('vni-number').innerText = final.replace('.', ',');
-    }
-    setInterval(updateVNI, 2000); // Cập nhật mỗi 2 giây
-</script>
+  <div class="buttons">
+    <a href="https://vnexpress.net/kinh-doanh" target="_blank">Tài chính - Kinh tế</a>
+    <a href="https://vnexpress.net/the-gioi" target="_blank">Địa chính trị</a>
+  </div>
 
-<footer>HỆ THỐNG CẬP NHẬT 2026 - THIẾT KẾ RIÊNG CHO TRẦN BẢO NAM</footer>
-
+  <div class="ticker">
+    <span>Tin nóng: VNExpress cập nhật liên tục... | Thị trường chứng khoán biến động... | Tình hình quốc tế mới nhất...</span>
+  </div>
 </body>
 </html>

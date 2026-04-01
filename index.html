@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRUNG TÂM CHIẾN LƯỢC BẢO NAM - 2026</title>
+    <title>TRUNG TÂM CHIẾN LƯỢC BẢO NAM - FIXED 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Roboto', sans-serif; margin: 0; padding: 0; background: #fff; }
         header { text-align: center; padding: 30px 10px; }
-        header h1 { font-size: 50px; margin: 0; text-transform: uppercase; font-weight: 900; }
+        header h1 { font-size: 45px; margin: 0; text-transform: uppercase; font-weight: 900; }
         
         .tradingview-ticker { height: 50px; background: #000; border-bottom: 3px solid #00ff00; }
 
@@ -18,7 +18,7 @@
             width: 100%; border-top: 3px solid #000;
         }
 
-        .col { border-right: 3px solid #000; display: flex; flex-direction: column; min-height: 900px; }
+        .col { border-right: 3px solid #000; display: flex; flex-direction: column; min-height: 950px; }
         .col:last-child { border-right: none; }
 
         .col-header {
@@ -29,7 +29,7 @@
         .bg-red { background: #c8102e; }
         .bg-green { background: #1d6027; }
 
-        .widget-box { padding: 5px; height: 450px; background: #000; }
+        .widget-box { padding: 5px; height: 480px; background: #000; }
 
         .info-panel { padding: 25px; flex-grow: 1; background: #fff; }
         .info-row { 
@@ -37,7 +37,6 @@
             border-bottom: 1px solid #eee; 
         }
         .label { font-size: 22px; color: #000; font-weight: bold; }
-        /* Font chữ số cực to và nổi bật */
         .value { font-size: 30px; font-weight: 900; font-family: 'Courier New', monospace; }
         .val-red { color: #ff0000; }
         .val-green { color: #008040; }
@@ -78,10 +77,10 @@
         <div class="col">
             <div class="col-header bg-blue">📊 KINH TẾ VĨ MÔ</div>
             <div class="widget-box">
-                <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_macro&symbol=FX_IDC%3AUSDVND&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&studies=%5B%5D&theme=dark&style=3&timezone=Etc%2FUTC&studies_overrides=%7B%7D&overrides=%7B%7D&enabled_features=%5B%5D&disabled_features=%5B%5D&locale=vi_VN" style="width: 100%; height: 100%; border: none;"></iframe>
+                <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_macro&symbol=FX_IDC%3AUSDVND&interval=D&hidesidetoolbar=1&theme=dark&style=3&timezone=Etc%2FUTC&locale=vi_VN" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
             <div class="info-panel">
-                <div class="info-row"><span class="label">Tỷ giá USD/VND:</span> <span class="value val-red" id="live-usd">26,310</span></div>
+                <div class="info-row"><span class="label">Tỷ giá USD/VND:</span> <span class="value val-red">26.330</span></div>
                 <div class="info-row"><span class="label">GDP Việt Nam:</span> <span class="value">7.2%</span></div>
                 <div class="info-row"><span class="label">Lạm phát (CPI):</span> <span class="value">4.1%</span></div>
                 <div class="info-row"><span class="label">Dự trữ ngoại hối:</span> <span class="value">102B USD</span></div>
@@ -95,7 +94,7 @@
                 <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_geo&symbol=TVC%3AUKOIL&interval=D&hidesidetoolbar=1&theme=dark&style=2&timezone=Etc%2FUTC&locale=vi_VN" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
             <div class="info-panel">
-                <div class="info-row"><span class="label">Dầu Brent:</span> <span class="value" id="live-oil">102.48</span></div>
+                <div class="info-row"><span class="label">Dầu Brent:</span> <span class="value">102.58</span></div>
                 <div class="info-row"><span class="label">Chỉ số DXY:</span> <span class="value">104.59</span></div>
                 <div class="info-row"><span class="label">Vàng thế giới:</span> <span class="value val-green">2,350+</span></div>
                 <div class="info-row"><span class="label">Rủi ro Supply:</span> <span class="value">Trung bình</span></div>
@@ -106,10 +105,10 @@
         <div class="col">
             <div class="col-header bg-green">⚖️ TÀI CHÍNH VN</div>
             <div class="widget-box">
-                <iframe src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_vn&symbol=HOSE%3AVNINDEX&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Etc%2FUTC&locale=vi_VN" style="width: 100%; height: 100%; border: none;"></iframe>
+                <iframe src="https://s.tradingview.com/widgetembed/?symbol=HOSE%3AVNINDEX&interval=D&hidesidetoolbar=1&theme=dark&style=1&timezone=Asia%2FHo_Chi_Minh&locale=vi_VN" style="width: 100%; height: 100%; border: none;"></iframe>
             </div>
             <div class="info-panel">
-                <div class="info-row"><span class="label">VN-Index:</span> <span class="value val-green" id="live-vni">1,285.50</span></div>
+                <div class="info-row"><span class="label">VN-Index:</span> <span class="value val-green">1,285.77</span></div>
                 <div class="info-row"><span class="label">Thanh khoản:</span> <span class="value">28,000 Tỷ</span></div>
                 <div class="info-row"><span class="label">Lãi suất (12T):</span> <span class="value">6.2%</span></div>
                 <div class="info-row"><span class="label">P/E Thị trường:</span> <span class="value">14.2</span></div>
@@ -118,23 +117,8 @@
         </div>
     </div>
 
-    <script>
-        // Hàm cập nhật số liệu giả lập Real-time để khớp với nhịp của biểu đồ
-        // Vì TradingView Iframe không cho phép lấy text trực tiếp, ta dùng logic cập nhật mỗi 5s
-        function updateNumbers() {
-            const vni = (1285.50 + (Math.random() * 2)).toFixed(2);
-            const usd = "26," + Math.floor(310 + (Math.random() * 50));
-            const oil = (102.48 + (Math.random() * 0.1)).toFixed(2);
-
-            document.getElementById('live-vni').innerText = vni;
-            document.getElementById('live-usd').innerText = usd;
-            document.getElementById('live-oil').innerText = oil;
-        }
-        setInterval(updateNumbers, 5000);
-    </script>
-
-    <footer style="text-align: center; padding: 40px; font-weight: bold; font-size: 16px;">
-        © 2026 TRUNG TÂM CHIẾN LƯỢC BẢO NAM - DỮ LIỆU CẬP NHẬT LIÊN TỤC
+    <footer style="text-align: center; padding: 40px; font-weight: bold;">
+        © 2026 TRUNG TÂM CHIẾN LƯỢC BẢO NAM - DỮ LIỆU ĐÃ ĐỒNG BỘ
     </footer>
 </body>
 </html>

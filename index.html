@@ -3,70 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CHIẾN LƯỢC ĐẦU TƯ | TRẦN BẢO NAM</title>
+    <title>DASHBOARD CHIẾN LƯỢC | TRẦN BẢO NAM</title>
     <style>
         :root {
             --bg: #f0f2f5;
-            --accent: #1a1a1a;
+            --accent: #000;
             --blue: #004a99;
             --red: #c62828;
             --green: #1b5e20;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg);
             margin: 0; padding: 0;
-            font-size: 18px; /* Tăng size nền toàn trang */
+            font-weight: bold;
         }
 
         header {
             background: #fff;
-            padding: 40px 20px;
-            border-bottom: 8px solid var(--accent);
+            padding: 40px 0;
+            border-bottom: 10px solid var(--accent);
             text-align: center;
         }
 
-        h1 { margin: 0; font-size: 3.5em; text-transform: uppercase; letter-spacing: 3px; }
+        h1 { margin: 0; font-size: 4em; text-transform: uppercase; letter-spacing: 5px; }
 
-        /* TICKER CHỮ TO RÕ */
-        .ticker-wrap {
-            background: #000; color: #00ff00;
-            padding: 15px 0; overflow: hidden;
-            border-bottom: 3px solid #333;
-        }
-        .ticker {
-            display: inline-block; white-space: nowrap;
-            animation: ticker 45s linear infinite;
-            font-family: 'Courier New', monospace; 
-            font-size: 1.5em; /* Chữ chạy to hơn */
-            font-weight: bold;
-        }
-        @keyframes ticker {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        /* THANH TICKER CHẠY REAL-TIME TỪ TRADINGVIEW */
+        .ticker-container {
+            width: 100%;
+            height: 60px; /* Tăng độ cao cho chữ to */
+            background: #000;
+            border-bottom: 5px solid #333;
         }
 
-        /* GRID BÍT KÍN MÀN HÌNH */
         .main-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             width: 100%;
-            min-height: 90vh;
-            box-sizing: border-box;
-            background: #ddd; /* Màu nền lấp khoảng hở */
-            gap: 5px; /* Khe hở cực nhỏ */
+            gap: 2px; /* Ép sát nhau nhất có thể để bít khoảng trống */
+            background: #000;
         }
 
         .card {
             background: #fff;
-            display: flex; flex-direction: column;
-            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 1000px; /* Kéo dài cột xuống phía dưới */
         }
 
         .card-header {
-            padding: 30px; text-align: center;
-            font-weight: 900; font-size: 2.2em; color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 2.5em; /* Chữ tiêu đề cực to */
+            color: #fff;
             text-transform: uppercase;
         }
         .bg-blue { background: var(--blue); }
@@ -74,40 +64,56 @@
         .bg-green { background: var(--green); }
 
         .card-body {
-            padding: 40px; flex-grow: 1;
-            display: flex; flex-direction: column;
+            padding: 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* BIỂU ĐỒ CHIẾM DIỆN TÍCH LỚN */
-        .chart-area {
-            width: 100%; height: 450px;
-            margin-bottom: 30px;
+        .chart-box {
+            width: 100%;
+            height: 500px; /* Tăng kích thước biểu đồ */
+            margin-bottom: 40px;
             border: 2px solid #eee;
         }
 
-        /* DANH SÁCH THÔNG TIN CHỮ TO */
-        .info-list { list-style: none; padding: 0; margin-bottom: 40px; }
-        .info-list li {
-            padding: 20px 0; border-bottom: 2px solid #f0f0f0;
-            font-size: 1.4em; /* Chữ thông tin cực to */
-            display: flex; justify-content: space-between;
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 50px 0;
         }
-        .info-list strong { color: #000; }
 
-        /* NÚT BẤM KHỔNG LỒ */
+        .info-list li {
+            padding: 25px 0;
+            border-bottom: 3px solid #f0f0f0;
+            font-size: 1.8em; /* Chữ thông số siêu to */
+            display: flex;
+            justify-content: space-between;
+        }
+
         .news-btn {
-            background: var(--accent); color: #fff;
-            padding: 25px; text-align: center;
-            text-decoration: none; border-radius: 0;
-            font-weight: 900; font-size: 1.6em;
+            background: var(--accent);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 2em;
+            font-weight: 900;
             margin-top: auto;
             transition: 0.3s;
         }
+
         .news-btn:hover { background: #00ff00; color: #000; }
 
-        footer { text-align: center; padding: 40px; background: #fff; border-top: 10px solid var(--accent); font-weight: bold; font-size: 1.3em; }
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #fff;
+            border-top: 10px solid var(--accent);
+            font-size: 1.5em;
+        }
 
-        @media (max-width: 1200px) {
+        @media (max-width: 1300px) {
             .main-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -115,14 +121,12 @@
 <body>
 
     <header>
-        <h1>🏛️ HỆ THỐNG CHIẾN LƯỢC BẢO NAM</h1>
-        <p style="font-size: 1.5em; font-weight: bold; color: #555;">Dữ liệu Phân tích & Quyết định đầu tư (Cập nhật 2026)</p>
+        <h1>🏛️ TRUNG TÂM CHIẾN LƯỢC BẢO NAM</h1>
+        <p style="font-size: 1.8em;">Kinh tế - Địa chính trị - Tài chính (Real-time 2026)</p>
     </header>
 
-    <div class="ticker-wrap">
-        <div class="ticker">
-            THỊ TRƯỜNG 2026: VN-INDEX MỤC TIÊU 1,350+ | DXY: 103.50 | BRENT OIL: $82.20 | USD/VND: 25,050 | S&P 500: 5,400 | BTC: $75,000 | TĂNG TRƯỞNG GDP VN: 6.5% - 7.0%
-        </div>
+    <div class="ticker-container">
+        <iframe src="https://s.tradingview.com/embed-widget/ticker-tape/?locale=vi&displayMode=regular&colorTheme=dark&symbols=INDEX%3AVNINDEX%7CFX_IDC%3AUSDVND%7CTVC%3AUKOIL%7CCOMEX%3AGC1%21%7CCAPITALCOM%3ADXY%7CBITSTAMP%3ABTCUSD&width=100%25&height=100%25" frameborder="0" style="width: 100%; height: 100%;"></iframe>
     </div>
 
     <div class="main-grid">
@@ -130,55 +134,52 @@
         <div class="card">
             <div class="card-header bg-blue">📈 KINH TẾ VĨ MÔ</div>
             <div class="card-body">
-                <div class="chart-area">
-                   <iframe src="https://vn.tradingview.com/embed-widget/mini-symbol-overview/?symbol=FX_IDC%3AUSDVND&interval=D&displayMode=large&width=100%25&height=100%25&colorTheme=light" frameborder="0" style="width:100%; height:100%"></iframe>
+                <div class="chart-box">
+                    <iframe src="https://vn.tradingview.com/embed-widget/mini-symbol-overview/?symbol=FX_IDC%3AUSDVND&interval=D&displayMode=large&width=100%25&height=100%25&colorTheme=light" frameborder="0" style="width:100%; height:100%"></iframe>
                 </div>
                 <ul class="info-list">
-                    <li><span>Mục tiêu GDP:</span> <strong>6.7%</strong></li>
-                    <li><span>CPI (Lạm phát):</span> <strong>3.8%</strong></li>
-                    <li><span>Tỷ giá USD/VND:</span> <strong>~25,050</strong></li>
-                    <li><span>Dòng vốn FDI:</span> <strong style="color:green">Tăng 12%</strong></li>
+                    <li><span>GDP Dự phóng:</span> <strong>6.8%</strong></li>
+                    <li><span>CPI (Lạm phát):</span> <strong>3.7%</strong></li>
+                    <li><span>Tỷ giá USDVND:</span> <strong>Theo dõi Live</strong></li>
                 </ul>
-                <a href="https://vnexpress.net/kinh-doanh/quoc-te" target="_blank" class="news-btn">CHI TIẾT KINH TẾ ↗</a>
+                <a href="https://vnexpress.net/kinh-doanh/quoc-te" target="_blank" class="news-btn">TIN KINH TẾ ↗</a>
             </div>
         </div>
 
         <div class="card">
             <div class="card-header bg-red">🌍 ĐỊA CHÍNH TRỊ</div>
             <div class="card-body">
-                <div class="chart-area">
+                <div class="chart-box">
                     <iframe src="https://vn.tradingview.com/embed-widget/mini-symbol-overview/?symbol=TVC%3AUKOIL&interval=D&displayMode=large&width=100%25&height=100%25&colorTheme=light" frameborder="0" style="width:100%; height:100%"></iframe>
                 </div>
                 <ul class="info-list">
-                    <li><span>Rủi ro năng lượng:</span> <strong>Trung bình</strong></li>
-                    <li><span>Chuỗi cung ứng:</span> <strong>Đang hồi phục</strong></li>
+                    <li><span>Giá Dầu Brent:</span> <strong>Real-time</strong></li>
+                    <li><span>Rủi ro Supply:</span> <strong>Trung bình</strong></li>
                     <li><span>Điểm nóng:</span> <strong>Thương mại Á-Âu</strong></li>
-                    <li><span>Chính sách:</span> <strong>Net Zero 2026</strong></li>
                 </ul>
-                <a href="https://tuoitre.vn/the-gioi.htm" target="_blank" class="news-btn">BIẾN ĐỘNG QUỐC TẾ ↗</a>
+                <a href="https://tuoitre.vn/the-gioi.htm" target="_blank" class="news-btn">TIN THẾ GIỚI ↗</a>
             </div>
         </div>
 
         <div class="card">
-            <div class="card-header bg-green">⚖️ TÀI CHÍNH VIỆT NAM</div>
+            <div class="card-header bg-green">⚖️ TÀI CHÍNH VN</div>
             <div class="card-body">
-                <div class="chart-area">
+                <div class="chart-box">
                     <iframe src="https://vn.tradingview.com/embed-widget/mini-symbol-overview/?symbol=INDEX%3AVNINDEX&interval=D&displayMode=large&width=100%25&height=100%25&colorTheme=light" frameborder="0" style="width:100%; height:100%"></iframe>
                 </div>
                 <ul class="info-list">
-                    <li><span>Vốn hóa thị trường:</span> <strong>~250 Tỷ USD</strong></li>
-                    <li><span>Thanh khoản TB:</span> <strong>21,500 Tỷ</strong></li>
-                    <li><span>Lãi suất tiết kiệm:</span> <strong>5.5% - 6.0%</strong></li>
-                    <li><span>Nhóm dẫn dắt:</span> <strong>Sản xuất & Đầu tư công</strong></li>
+                    <li><span>VN-INDEX:</span> <strong>Live Chart</strong></li>
+                    <li><span>Thanh khoản:</span> <strong>~22k Tỷ</strong></li>
+                    <li><span>Lãi suất tiết kiệm:</span> <strong>5.8%</strong></li>
                 </ul>
-                <a href="https://vietnamnet.vn/kinh-doanh/tai-chinh" target="_blank" class="news-btn">CHIẾN LƯỢC ĐẦU TƯ ↗</a>
+                <a href="https://vietnamnet.vn/kinh-doanh/tai-chinh" target="_blank" class="news-btn">TIN ĐẦU TƯ ↗</a>
             </div>
         </div>
 
     </div>
 
     <footer>
-        BẢN QUYỀN DỮ LIỆU THUỘC VỀ TRẦN BẢO NAM | 2026
+        DỮ LIỆU TỔNG HỢP CHO TRẦN BẢO NAM | 2026
     </footer>
 
 </body>
